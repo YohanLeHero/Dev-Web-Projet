@@ -26,25 +26,15 @@ export const StylesDeJeu = sqliteTable("StylesDeJeu", {
 
 
 export const Jeux = sqliteTable("Jeux", {
-  Id_Jeu: integer("Id_Jeu").primaryKey({
-    autoIncrement: true
-  }),
-
-  Nom: text("Nom").notNull(),
-
-  MiseEnAvant: integer("MiseEnAvant", {
-    mode: "boolean"
-  }).notNull().default(false),
-
-  Studio: text("Studio"),
-
-  Description: text("Description"),
-
-  Date_Sortie: text("Date_Sortie"),
-
-  Id_Style: integer("Id_Style")
-    .notNull()
-    .references(() => StylesDeJeu.Id_Style)
+    Id_Jeu: integer("Id_Jeu").primaryKey({ autoIncrement: true }),
+    Nom: text("Nom").notNull(),
+    MiseEnAvant: integer("MiseEnAvant", { mode: "boolean" }).notNull().default(false),
+    Studio: text("Studio"),
+    Description: text("Description"),
+    Date_Sortie: text("Date_Sortie"),
+    Image: blob("Image", { mode: "buffer" }),
+    Id_Style: integer("Id_Style").notNull()
+        .references(() => StylesDeJeu.Id_Style)
 });
 
 
@@ -121,17 +111,11 @@ export const Collection = sqliteTable("Collection", {
 // 6. BOOSTERS
 
 export const Boosters = sqliteTable("Boosters", {
-  Id_Booster: integer("Id_Booster").primaryKey({
-    autoIncrement: true
-  }),
-
-  Nom: text("Nom").notNull(),
-
-  Nmbr_cartes: integer("Nmbr_cartes").notNull(),
-
-  MiseEnAvant: integer("MiseEnAvant", {
-    mode: "boolean"
-  }).notNull().default(false)
+    Id_Booster: integer("Id_Booster").primaryKey({ autoIncrement: true }),
+    Nom: text("Nom").notNull(),
+    Nmbr_cartes: integer("Nmbr_cartes").notNull(),
+    MiseEnAvant: integer("MiseEnAvant", { mode: "boolean" }).notNull().default(false),
+    Image: blob("Image", { mode: "buffer" })
 });
 
 
