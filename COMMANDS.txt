@@ -1,0 +1,7 @@
+npm.cmd install
+
+npm.cmd run db:migrate
+
+npm.cmd run db:seed
+
+npm.cmd start

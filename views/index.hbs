@@ -1,0 +1,60 @@
+
+<section class="collection">
+
+    <h2>Mes cartes</h2>
+
+    <div class="cards">
+
+        {{#each cartes}}
+
+            <article class="card">
+
+                <img
+                    src="/api/cards/{{Id_Carte}}/image"
+                    alt="{{Nom_Personage}}"
+                    class="card-image"
+                >
+
+                <div class="card-content">
+
+                    {{#if MiseEnAvant}}
+                        <span class="featured">À la une</span>
+                    {{/if}}
+
+                    <h3>{{Nom_Personage}}</h3>
+
+                    <p class="description">
+                        {{#if Description}}
+                            {{Description}}
+                        {{else}}
+                            Aucune description disponible
+                        {{/if}}
+                    </p>
+
+                    <p><strong>Rareté :</strong> {{Rarete}}</p>
+
+                    <p><strong>Jeu :</strong> {{Nom_Jeu}}</p>
+
+                    <p><strong>Studio :</strong> {{Studio}}</p>
+
+                    <p><strong>Date de sortie :</strong> {{Date_Sortie}}</p>
+
+                    <p><strong>Style :</strong> {{Nom_Style}}</p>
+
+                    <p class="style-description">
+                        {{Description_Style}}
+                    </p>
+
+                </div>
+
+            </article>
+
+        {{else}}
+
+            <p>Aucune carte dans votre collection.</p>
+
+        {{/each}}
+
+    </div>
+
+</section>

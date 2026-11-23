@@ -1,0 +1,29 @@
+
+{
+  "name": "webproj",
+  "version": "1.0.0",
+  "description": "Collection de cartes de jeux vidéo",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "better-sqlite3": "^13.2.0",
+    "drizzle-orm": "^0.45.4",
+    "express": "^5.3.0",
+    "hbs": "^4.4.0",
+    "multer": "^2.5.0"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.11",
+    "nodemon": "^3.1.14"
+  }
+}
+  

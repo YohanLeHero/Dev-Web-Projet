@@ -1,0 +1,13 @@
+# Dépendances
+node_modules/
+
+# Fichiers temporaires
+*.log
+npm-debug.log*
+
+# Variables d'environnement
+.env
+
+# Fichiers système
+.DS_Store
+Thumbs.db

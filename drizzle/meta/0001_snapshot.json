@@ -1,0 +1,408 @@
+{
+  "version": "6",
+  "dialect": "sqlite",
+  "id": "e4e2c972-f3ce-44ca-b723-ac34eedda749",
+  "prevId": "830ffa72-9d03-4c4c-a960-283911154bae",
+  "tables": {
+    "Boosters": {
+      "name": "Boosters",
+      "columns": {
+        "Id_Booster": {
+          "name": "Id_Booster",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "Nom": {
+          "name": "Nom",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "Nmbr_cartes": {
+          "name": "Nmbr_cartes",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "MiseEnAvant": {
+          "name": "MiseEnAvant",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "Cartes": {
+      "name": "Cartes",
+      "columns": {
+        "Id_Carte": {
+          "name": "Id_Carte",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "Nom_Personage": {
+          "name": "Nom_Personage",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "Jeu": {
+          "name": "Jeu",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "Description": {
+          "name": "Description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "Rarete": {
+          "name": "Rarete",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "Image": {
+          "name": "Image",
+          "type": "blob",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "MiseEnAvant": {
+          "name": "MiseEnAvant",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": false
+        },
+        "Id_Jeu": {
+          "name": "Id_Jeu",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Cartes_Id_Jeu_Jeux_Id_Jeu_fk": {
+          "name": "Cartes_Id_Jeu_Jeux_Id_Jeu_fk",
+          "tableFrom": "Cartes",
+          "tableTo": "Jeux",
+          "columnsFrom": [
+            "Id_Jeu"
+          ],
+          "columnsTo": [
+            "Id_Jeu"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "Collection": {
+      "name": "Collection",
+      "columns": {
+        "Id_Carte": {
+          "name": "Id_Carte",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "Id_Utilisateur": {
+          "name": "Id_Utilisateur",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Collection_Id_Carte_Cartes_Id_Carte_fk": {
+          "name": "Collection_Id_Carte_Cartes_Id_Carte_fk",
+          "tableFrom": "Collection",
+          "tableTo": "Cartes",
+          "columnsFrom": [
+            "Id_Carte"
+          ],
+          "columnsTo": [
+            "Id_Carte"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "Collection_Id_Utilisateur_Utilisateurs_Id_Utilisateur_fk": {
+          "name": "Collection_Id_Utilisateur_Utilisateurs_Id_Utilisateur_fk",
+          "tableFrom": "Collection",
+          "tableTo": "Utilisateurs",
+          "columnsFrom": [
+            "Id_Utilisateur"
+          ],
+          "columnsTo": [
+            "Id_Utilisateur"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "Collection_Id_Carte_Id_Utilisateur_pk": {
+          "columns": [
+            "Id_Carte",
+            "Id_Utilisateur"
+          ],
+          "name": "Collection_Id_Carte_Id_Utilisateur_pk"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "Contient": {
+      "name": "Contient",
+      "columns": {
+        "Id_Carte": {
+          "name": "Id_Carte",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "Id_Booster": {
+          "name": "Id_Booster",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Contient_Id_Carte_Cartes_Id_Carte_fk": {
+          "name": "Contient_Id_Carte_Cartes_Id_Carte_fk",
+          "tableFrom": "Contient",
+          "tableTo": "Cartes",
+          "columnsFrom": [
+            "Id_Carte"
+          ],
+          "columnsTo": [
+            "Id_Carte"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "Contient_Id_Booster_Boosters_Id_Booster_fk": {
+          "name": "Contient_Id_Booster_Boosters_Id_Booster_fk",
+          "tableFrom": "Contient",
+          "tableTo": "Boosters",
+          "columnsFrom": [
+            "Id_Booster"
+          ],
+          "columnsTo": [
+            "Id_Booster"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "Contient_Id_Carte_Id_Booster_pk": {
+          "columns": [
+            "Id_Carte",
+            "Id_Booster"
+          ],
+          "name": "Contient_Id_Carte_Id_Booster_pk"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "Jeux": {
+      "name": "Jeux",
+      "columns": {
+        "Id_Jeu": {
+          "name": "Id_Jeu",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "Nom": {
+          "name": "Nom",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "MiseEnAvant": {
+          "name": "MiseEnAvant",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": false
+        },
+        "Studio": {
+          "name": "Studio",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "Description": {
+          "name": "Description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "Date_Sortie": {
+          "name": "Date_Sortie",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "Id_Style": {
+          "name": "Id_Style",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Jeux_Id_Style_StylesDeJeu_Id_Style_fk": {
+          "name": "Jeux_Id_Style_StylesDeJeu_Id_Style_fk",
+          "tableFrom": "Jeux",
+          "tableTo": "StylesDeJeu",
+          "columnsFrom": [
+            "Id_Style"
+          ],
+          "columnsTo": [
+            "Id_Style"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "StylesDeJeu": {
+      "name": "StylesDeJeu",
+      "columns": {
+        "Id_Style": {
+          "name": "Id_Style",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "Nom": {
+          "name": "Nom",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "Description": {
+          "name": "Description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "Utilisateurs": {
+      "name": "Utilisateurs",
+      "columns": {
+        "Id_Utilisateur": {
+          "name": "Id_Utilisateur",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "Pseudo": {
+          "name": "Pseudo",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "Mdp": {
+          "name": "Mdp",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "IsAdmin": {
+          "name": "IsAdmin",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": false
+        }
+      },
+      "indexes": {
+        "Utilisateurs_Pseudo_unique": {
+          "name": "Utilisateurs_Pseudo_unique",
+          "columns": [
+            "Pseudo"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    }
+  },
+  "views": {},
+  "enums": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  },
+  "internal": {
+    "indexes": {}
+  }
+}
