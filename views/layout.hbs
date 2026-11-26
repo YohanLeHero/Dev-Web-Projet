@@ -10,6 +10,16 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+    <nav>
+    {{#if utilisateur}}
+        <span>{{utilisateur.Pseudo}}</span>
+        <form method="POST" action="/deconnexion" style="display:inline">
+            <button type="submit">Déconnexion</button>
+        </form>
+    {{else}}
+        <a href="/connexion">Connexion</a>
+    {{/if}}
+</nav>
 
     <main class="container">
         {{{body}}}
